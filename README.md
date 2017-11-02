@@ -6,10 +6,10 @@ This package needs [LibreOffice](https://libreoffice.org/) for the convertion.
 
 ## Which extension can be converted to what?
 You can check the following files:
-- [WriterProgramm.php](src/Programms/WriterProgramm.php)
-- [CalcProgramm.php](src/Programms/CalcProgramm.php)
-- [DrawProgramm.php](src/Programms/DrawProgramm.php)
-- [ImpressProgramm.php](src/Programms/ImpressProgramm.php)
+- [WriterProgramm.php](src/Programs/WriterProgramm.php)
+- [CalcProgramm.php](src/Programs/CalcProgramm.php)
+- [DrawProgramm.php](src/Programs/DrawProgramm.php)
+- [ImpressProgramm.php](src/Programs/ImpressProgramm.php)
 
 ## Installation
 
