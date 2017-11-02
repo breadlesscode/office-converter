@@ -1,0 +1,60 @@
+# Office converter (with LibreOffice)
+This package is for converting office formats to something else. You can generate Thumbnails, PDFs etc.. 
+
+## Requirements
+This package needs [LibreOffice](https://libreoffice.org/) for the convertion.
+
+## Which extension can be converted to what?
+You can check the following files:
+- [WriterProgramm.php](./src/Programms/WriterProgramm.php)
+- [CalcProgramm.php](./src/Programms/CalcProgramm.php)
+- [DrawProgramm.php](./src/Programms/DrawProgramm.php)
+- [ImpressProgramm.php](./src/Programms/ImpressProgramm.php)
+
+## Installation
+
+This package can be installed through Composer.
+```bash
+composer require breadlesscode/office-conveter
+```
+## How to use
+
+```php
+use \Breadlesscode\Office\Converter;
+
+Converter::file('Test.odt') // select a file for convertion
+    ->setLibreofficeBinaryPath('/usr/bin/libreoffice') // binary to the libreoffice binary
+    ->setTemporaryPath('./temp') // temporary directory for convertion
+    ->setTimeout(100) // libreoffice process timeout
+    ->save(__DIR__.'/lorem.pdf'); // save as pdf
+```
+
+## Examples
+
+### Save with original name in folder
+```php
+use Breadlesscode\Office\Converter;
+
+Converter::file('./Test.odt')
+    ->save('./lorem', 'jpg');
+```
+### Save with custom name
+```php
+use Breadlesscode\Office\Converter;
+
+Converter::file('./Test.odt')
+    ->save('./lorem.jpg');
+```
+## ToDo
+[ ] Rethinking parameter building process
+[ ] Add some more Tests
+
+Ideas and PRs are welcome :)
+## Testing
+
+``` bash
+$ composer test
+```
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

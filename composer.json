@@ -1,0 +1,46 @@
+{
+    "name": "breadlesscode/office-converter",
+    "description": "Convert office documents to something else",
+    "keywords": [
+        "office",
+        "libre",
+        "convert",
+        "thumbnail",
+        "pdf",
+        "text",
+        "export"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marvin Kuhn",
+            "email": "marvin@kuhnweblab.com",
+            "homepage": "https://kuhnweblab.com/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0",
+        "symfony/process": "^3.3",
+        "spatie/temporary-directory": "^1.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Breadlesscode\\Office\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Breadlesscode\\Office\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
