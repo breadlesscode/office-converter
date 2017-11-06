@@ -6,10 +6,10 @@ This package needs [LibreOffice](https://libreoffice.org/) for the convertion.
 
 ## Which extension can be converted to what?
 You can check the following files:
-- [WriterProgramm.php](./src/Programms/WriterProgramm.php)
-- [CalcProgramm.php](./src/Programms/CalcProgramm.php)
-- [DrawProgramm.php](./src/Programms/DrawProgramm.php)
-- [ImpressProgramm.php](./src/Programms/ImpressProgramm.php)
+- [WriterProgramm.php](src/Programs/WriterProgram.php)
+- [CalcProgramm.php](./src/Programs/CalcProgram.php)
+- [DrawProgramm.php](src/Programs/DrawProgram.php)
+- [ImpressProgramm.php](src/Programs/ImpressProgram.php)
 
 ## Installation
 
@@ -46,8 +46,8 @@ Converter::file('./Test.odt')
     ->save('./lorem.jpg');
 ```
 ## ToDo
-[ ] Rethinking parameter building process
-[ ] Add some more Tests
+- [ ] Rethinking parameter building process
+- [ ] Add some more Tests
 
 Ideas and PRs are welcome :)
 ## Testing
