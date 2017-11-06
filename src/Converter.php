@@ -174,7 +174,7 @@ class Converter
         $filePath = $this->file;
         $this->paramters[] = $filePath;
         // glue parameters
-        $cliStr = $this->binaryPath;
+        $cliStr = escapeshellarg($this->binaryPath);
         $cliStr.= ' '.implode(' ', $this->paramters);
         // start convert process
         $process = (new Process($cliStr))->setTimeout($this->timeout);
