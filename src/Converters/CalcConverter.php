@@ -1,8 +1,8 @@
 <?php
 
-namespace Breadlesscode\Office\Programs;
+namespace Breadlesscode\Office\Converters;
 
-class CalcProgram extends Program
+class CalcConverter extends Converter
 {
     protected static $handableExtensions = [
         'xls', 'ods', 'numbers', 'dif', 'gnm',

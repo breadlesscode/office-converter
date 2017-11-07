@@ -1,8 +1,8 @@
 <?php
 
-namespace Breadlesscode\Office\Programs;
+namespace Breadlesscode\Office\Converters;
 
-class ImpressProgram extends Program
+class ImpressConverter extends Converter
 {
     protected static $handableExtensions = [
         'ppt', 'pptx', 'odp', 'kth', 'key',

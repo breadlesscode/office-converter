@@ -1,8 +1,8 @@
 <?php
 
-namespace Breadlesscode\Office\Programs;
+namespace Breadlesscode\Office\Converters;
 
-class DrawProgram extends Program
+class DrawConverter extends Converter
 {
     protected static $handableExtensions = [
         'svg', 'odg'

@@ -1,8 +1,8 @@
 <?php
 
-namespace Breadlesscode\Office\Programs;
+namespace Breadlesscode\Office\Converters;
 
-class WriterProgram extends Program
+class WriterConverter extends Converter
 {
     protected static $handableExtensions = [
         'doc', 'docx', 'odt', 'pdf', 'dot', 'wri',

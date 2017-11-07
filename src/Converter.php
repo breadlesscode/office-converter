@@ -2,18 +2,18 @@
 
 namespace Breadlesscode\Office;
 
+use Breadlesscode\Office\Exception\ConverterException;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Symfony\Component\Process\Process;
-use Breadlesscode\Office\Exception\ConverterException;
 
 class Converter
 {
     public static $converters = [
-        \Breadlesscode\Office\Programs\WriterProgram::class,
-        \Breadlesscode\Office\Programs\CalcProgram::class,
-        \Breadlesscode\Office\Programs\ImpressProgram::class,
-        \Breadlesscode\Office\Programs\DrawProgram::class
+        \Breadlesscode\Office\Converters\WriterConverter::class,
+        \Breadlesscode\Office\Converters\CalcConverter::class,
+        \Breadlesscode\Office\Converters\ImpressConverter::class,
+        \Breadlesscode\Office\Converters\DrawConverter::class
     ];
 
     protected $paramters = ['--headless'];
@@ -103,7 +103,7 @@ class Converter
             $extension = $pathInfo['extension'] ? $pathInfo['extension'] : $extension;
         }
 
-        if (!$this->isConvertable($extension)) {
+        if (!$this->isConvertableTo($extension)) {
             throw new ConverterException("Invalid conversion. Can not convert ".$this->fileInfo['extension']." to ".$extension, 1);
         }
 
@@ -124,7 +124,7 @@ class Converter
 
     public function content(string $extension = null): string
     {
-        if (!$this->isConvertable($extension)) {
+        if (!$this->isConvertableTo($extension)) {
             throw new ConverterException("Invalid conversion. Can not convert ".$this->fileInfo['extension']." to ".$extension, 1);
         }
 
@@ -187,7 +187,7 @@ class Converter
         return $process->getOutput();
     }
 
-    protected function isConvertable(string $extension): bool
+    protected function isConvertableTo(string $extension): bool
     {
         if (is_null($extension)) {
             throw new ConverterException('No extension is set.');

@@ -1,8 +1,8 @@
 <?php
 
-namespace Breadlesscode\Office\Programs;
+namespace Breadlesscode\Office\Converters;
 
-abstract class Program
+abstract class Converter
 {
     protected static $handableExtensions = [];
     protected static $possibleConversions = [];
