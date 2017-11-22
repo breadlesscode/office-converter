@@ -1,4 +1,8 @@
 # Office converter (with LibreOffice)
+[![Latest Stable Version](https://poser.pugx.org/breadlesscode/office-converter/v/stable)]()
+[![Downloads](https://img.shields.io/packagist/dt/breadlesscode/office-converter.svg)]()
+[![License](https://img.shields.io/github/license/breadlesscode/office-converter.svg)]()
+
 This package is for converting office formats to something else. You can generate Thumbnails, PDFs etc.. 
 
 ## Requirements
