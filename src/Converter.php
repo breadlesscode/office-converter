@@ -17,7 +17,6 @@ class Converter
     ];
 
     protected $paramters = ['--headless'];
-    protected $fileInfo = null;
     protected $file = null;
     protected $converter = null;
     protected $binaryPath = 'libreoffice';
@@ -26,25 +25,23 @@ class Converter
 
     public function __construct(string $file, string $fileType = null)
     {
-        if (!file_exists($file)) {
-            throw new ConverterException("File ".$file." not found!", 1);
+        try {
+            $file = new File($file);
+        } catch(Exception $e) {
+            throw new ConverterException($e->getMessage(), 1);
         }
 
-        $fileExtension = $fileType ?: pathinfo(realpath($file), PATHINFO_EXTENSION);
-
-        foreach (self::$converters as $converter) {
-            if (!$converter::canHandleExtension($fileExtension)) {
+        foreach(self::$converters as $converter) {
+            if(!$converter::canHandleExtension($file->getExtension()))
                 continue;
-            }
 
-            $this->fileInfo  = pathinfo($file);
             $this->file = $file;
             $this->converter = $converter;
             break;
         }
 
-        if ($this->file === null) {
-            throw new ConverterException('Can not handle file type '.$fileExtension);
+        if($this->file === null) {
+            throw new ConverterException('Can not handle file type '.$file->getExtension());
         }
     }
 
@@ -86,7 +83,7 @@ class Converter
 
     public function thumbnail(string $extension = 'jpg')
     {
-        $this->save($this->fileInfo['dirname'].DIRECTORY_SEPARATOR.$this->getNewFilename($extension));
+        $this->save($this->file->getDirecotry().DIRECTORY_SEPARATOR.$this->getNewFilename($extension));
     }
 
     public function text()
@@ -104,7 +101,7 @@ class Converter
         }
 
         if (!$this->isConvertableTo($extension)) {
-            throw new ConverterException("Invalid conversion. Can not convert ".$this->fileInfo['extension']." to ".$extension, 1);
+            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getExtension()." to ".$extension, 1);
         }
 
 
@@ -125,7 +122,7 @@ class Converter
     public function content(string $extension = null): string
     {
         if (!$this->isConvertableTo($extension)) {
-            throw new ConverterException("Invalid conversion. Can not convert ".$this->fileInfo['extension']." to ".$extension, 1);
+            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getExtension()." to ".$extension, 1);
         }
 
         $tempDir = (new TemporaryDirectory(__DIR__))
@@ -146,9 +143,7 @@ class Converter
 
     protected function getNewFilename(string $extension)
     {
-        $path = $this->file;
-
-        return str_replace($this->fileInfo['extension'], $extension, $this->fileInfo['basename']);
+        return str_replace($this->file->getExtension(), $extension, $this->file->getName());
     }
 
     protected function setOutputDir(string $dir)
@@ -171,7 +166,7 @@ class Converter
     protected function callLibreofficeBinary(): string
     {
         // add file to convert
-        $filePath = $this->file;
+        $filePath = (string) $this->file;
         $this->paramters[] = $filePath;
         // glue parameters
         $cliStr = escapeshellarg($this->binaryPath);
