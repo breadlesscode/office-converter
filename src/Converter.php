@@ -160,7 +160,7 @@ class Converter
 
     protected function escapeArgument(string $arg): string
     {
-        return $arg;
+        return escapeshellarg($arg);
     }
 
     protected function callLibreofficeBinary(): string
