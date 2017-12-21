@@ -2,7 +2,7 @@
 
 namespace Breadlesscode\Office\Converters;
 
-class WriterConverter extends Converter
+class WriterConverter extends AbstractConverter
 {
     protected static $handableExtensions = [
         'doc', 'docx', 'odt', 'pdf', 'dot', 'wri',

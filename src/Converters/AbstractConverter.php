@@ -2,7 +2,7 @@
 
 namespace Breadlesscode\Office\Converters;
 
-abstract class Converter
+abstract class AbstractConverter
 {
     protected static $handableExtensions = [];
     protected static $possibleConversions = [];

@@ -2,7 +2,7 @@
 
 namespace Breadlesscode\Office\Converters;
 
-class DrawConverter extends Converter
+class DrawConverter extends AbstractConverter
 {
     protected static $handableExtensions = [
         'svg', 'odg'

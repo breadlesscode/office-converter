@@ -2,7 +2,7 @@
 
 namespace Breadlesscode\Office\Converters;
 
-class ImpressConverter extends Converter
+class ImpressConverter extends AbstractConverter
 {
     protected static $handableExtensions = [
         'ppt', 'pptx', 'odp', 'kth', 'key',

@@ -2,7 +2,7 @@
 
 namespace Breadlesscode\Office\Converters;
 
-class CalcConverter extends Converter
+class CalcConverter extends AbstractConverter
 {
     protected static $handableExtensions = [
         'xls', 'ods', 'numbers', 'dif', 'gnm',
