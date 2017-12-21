@@ -1,12 +1,15 @@
 <?php
+
 namespace Breadlesscode\Office\Test;
 
 use Breadlesscode\Office\Converter;
 
 class ConverterTest extends TestCase
 {
-    /** @test */
-    public function it_can_gernerate_thumbnail()
+    /**
+     * @test
+     */
+    public function canGenerateThumbnail()
     {
         Converter::file($this->getTestFile('Test.odt'))
             ->thumbnail();
@@ -14,8 +17,10 @@ class ConverterTest extends TestCase
         $this->assertFileExists($this->getTestFileDirectory().'/Test.jpg');
     }
 
-    /** @test */
-    public function it_can_gernerate_a_pdf_version()
+    /**
+     * @test
+     */
+    public function canGeneratePdfVersion()
     {
         Converter::file($this->getTestFile('Test.odt'))
             ->save('MyTest.pdf');
@@ -23,8 +28,10 @@ class ConverterTest extends TestCase
         $this->assertFileExists($this->getTestFileDirectory().'/Test.jpg');
     }
 
-    /** @test */
-    public function it_can_export_text()
+    /**
+     * @test
+     */
+    public function canExportText()
     {
         $text = Converter::file($this->getTestFile('Test.odt'))
             ->text();
