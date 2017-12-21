@@ -27,7 +27,7 @@ class Converter
     {
         try {
             $file = new File($file);
-        } catch(Exception $e) {
+        } catch(\Exception $e) {
             throw new ConverterException($e->getMessage(), 1);
         }
 
@@ -83,7 +83,7 @@ class Converter
 
     public function thumbnail(string $extension = 'jpg')
     {
-        $this->save($this->file->getDirecotry().DIRECTORY_SEPARATOR.$this->getNewFilename($extension));
+        $this->save($this->file->getDirectory().DIRECTORY_SEPARATOR.$this->getNewFilename($extension));
     }
 
     public function text()

@@ -12,7 +12,7 @@ class File
     function __construct(string $file)
     {
         if(!file_exists($file)) {
-            throw new Exception("File '${file}'' not found!", 1);
+            throw new \Exception("File '${file}'' not found!", 1);
         }
 
         $this->original = $file;
