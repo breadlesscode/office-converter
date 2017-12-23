@@ -1,5 +1,4 @@
 <?php
-
 namespace Breadlesscode\Office\Test;
 
 use Breadlesscode\Office\File;

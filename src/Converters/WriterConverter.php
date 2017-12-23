@@ -1,5 +1,4 @@
 <?php
-
 namespace Breadlesscode\Office\Converters;
 
 class WriterConverter extends AbstractConverter

@@ -1,5 +1,4 @@
 <?php
-
 namespace Breadlesscode\Office\Converters;
 
 abstract class AbstractConverter

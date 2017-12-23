@@ -6,7 +6,9 @@ use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 abstract class TestCase extends PHPUnitTestCase
 {
-    /** @var \Spatie\TemporaryDirectory\TemporaryDirectory */
+    /**
+     * @var \Spatie\TemporaryDirectory\TemporaryDirectory
+     */
     protected $tempDir;
 
     public function setUp()

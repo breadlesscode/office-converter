@@ -1,5 +1,4 @@
 <?php
-
 namespace Breadlesscode\Office;
 
 use Breadlesscode\Office\Exception\ConverterException;
@@ -32,8 +31,9 @@ class Converter
         }
 
         foreach(self::$converters as $converter) {
-            if(!$converter::canHandleExtension($file->getExtension()))
+            if(!$converter::canHandleExtension($file->getExtension())) {
                 continue;
+            }
 
             $this->file = $file;
             $this->converter = $converter;
