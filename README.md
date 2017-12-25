@@ -6,14 +6,15 @@
 This package is for converting office formats to something else. You can generate Thumbnails, PDFs etc.. 
 
 ## Requirements
-This package needs [LibreOffice](https://libreoffice.org/) for the convertion.
+ - [LibreOffice](https://libreoffice.org/) for the convertion.
+ - PHP >= 7.0
 
 ## Which extension can be converted to what?
 You can check the following files:
-- [WriterProgramm.php](src/Converters/WriterConverter.php)
-- [CalcProgramm.php](./src/Converters/CalcConverter.php)
-- [DrawProgramm.php](src/Converters/DrawConverter.php)
-- [ImpressProgramm.php](src/Converters/ImpressConverter.php)
+- [WriterConverter.php](src/Converters/WriterConverter.php)
+- [CalcConverter.php](./src/Converters/CalcConverter.php)
+- [DrawConverter.php](src/Converters/DrawConverter.php)
+- [ImpressConverter.php](src/Converters/ImpressConverter.php)
 
 ## Installation
 
@@ -49,11 +50,7 @@ use Breadlesscode\Office\Converter;
 Converter::file('./Test.odt')
     ->save('./lorem.jpg');
 ```
-## ToDo
-- [ ] Rethinking parameter building process
-- [ ] Add some more Tests
 
-Ideas and PRs are welcome :)
 ## Testing
 
 ``` bash
