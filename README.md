@@ -3,11 +3,11 @@
 [![Downloads](https://img.shields.io/packagist/dt/breadlesscode/office-converter.svg)]()
 [![License](https://img.shields.io/github/license/breadlesscode/office-converter.svg)]()
 
-This package is for converting office formats to something else. You can generate Thumbnails, PDFs etc.. 
+This package is for converting office formats to something else. You can generate Thumbnails, PDFs etc..
 
 ## Requirements
  - [LibreOffice](https://libreoffice.org/) for the convertion.
- - PHP >= 7.0
+ - PHP >= 7.1
 
 ## Which extension can be converted to what?
 You can check the following files:
