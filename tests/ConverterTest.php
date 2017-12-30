@@ -44,9 +44,20 @@ class ConverterTest extends TestCase
     public function canGeneratePdfVersion()
     {
         Converter::file($this->getTestFile('Test.odt'))
-            ->save('MyTest.pdf');
+            ->save($this->getTestFileDirectory() . '/MyTest.pdf');
 
-        $this->assertFileExists($this->getTestFileDirectory() . '/Test.jpg');
+        $this->assertFileExists($this->getTestFileDirectory() . '/MyTest.pdf');
+    }
+
+    /**
+     * @test
+     */
+    public function canGenerateThumbnailOfFileWithoutExtension()
+    {
+        Converter::file($this->getTestFile('Test'), 'odt')
+            ->save($this->getTestFileDirectory() . '/MyTest-2.pdf');
+
+        $this->assertFileExists($this->getTestFileDirectory() . '/MyTest-2.pdf');
     }
 
     /**
