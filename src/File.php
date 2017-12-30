@@ -7,20 +7,24 @@ class File
     protected $extension = null;
     protected $directory = null;
     protected $name = null;
+    protected $type = null;
 
-    function __construct(string $file)
+    public function __construct(string $file, string $type = null)
     {
-        if(!file_exists($file)) {
+        if (!file_exists($file)) {
             throw new \Exception("File '${file}'' not found!", 1);
         }
 
         $this->original = $file;
+        $pathInfo = pathinfo($file);
+        $pathInfo['extension'] = isset($pathInfo['extension']) ? $pathInfo['extension'] : null;
         // using php 7.1 array destruction
         [
             'extension' => $this->extension,
             'dirname' => $this->directory,
             'basename' => $this->name
-        ] = pathinfo($file);
+        ] = $pathInfo;
+        $this->type = $type ?? $pathInfo['extension'];
     }
 
     public function getDirectory(): string
@@ -28,7 +32,7 @@ class File
         return $this->directory;
     }
 
-    public function getExtension(): string
+    public function getExtension()
     {
         return $this->extension;
     }
@@ -36,6 +40,11 @@ class File
     public function getName(): string
     {
         return $this->name;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
     }
 
     public function getOriginal(): string

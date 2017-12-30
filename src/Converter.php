@@ -25,13 +25,13 @@ class Converter
     public function __construct(string $file, string $fileType = null)
     {
         try {
-            $file = new File($file);
-        } catch(\Exception $e) {
+            $file = new File($file, $fileType);
+        } catch (\Exception $e) {
             throw new ConverterException($e->getMessage(), 1);
         }
 
-        foreach(self::$converters as $converter) {
-            if(!$converter::canHandleExtension($file->getExtension())) {
+        foreach (self::$converters as $converter) {
+            if (!$converter::canHandleExtension($file->getType())) {
                 continue;
             }
 
@@ -40,8 +40,8 @@ class Converter
             break;
         }
 
-        if($this->file === null) {
-            throw new ConverterException('Can not handle file type '.$file->getExtension());
+        if ($this->file === null) {
+            throw new ConverterException('Can not handle file type '.$file->getType());
         }
     }
 
@@ -101,7 +101,7 @@ class Converter
         }
 
         if (!$this->isConvertableTo($extension)) {
-            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getExtension()." to ".$extension, 1);
+            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getType()." to ".$extension, 1);
         }
 
 
@@ -122,7 +122,7 @@ class Converter
     public function content(string $extension = null): string
     {
         if (!$this->isConvertableTo($extension)) {
-            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getExtension()." to ".$extension, 1);
+            throw new ConverterException("Invalid conversion. Can not convert ".$this->file->getType()." to ".$extension, 1);
         }
 
         $tempDir = (new TemporaryDirectory(__DIR__))
@@ -143,6 +143,10 @@ class Converter
 
     protected function getNewFilename(string $extension)
     {
+        if ($this->file->getExtension() === null) {
+            return $this->file->getName() . '.' . $extension;
+        }
+
         return str_replace($this->file->getExtension(), $extension, $this->file->getName());
     }
 
