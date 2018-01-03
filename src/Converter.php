@@ -88,7 +88,7 @@ class Converter
 
     public function text()
     {
-        return trim($this->content('txt'));
+        return trim($this->content('txt'), "\t\n\r\0\x0B\u{FEFF}");
     }
 
     public function save(string $path, string $extension = null): bool
