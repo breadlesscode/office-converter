@@ -20,7 +20,7 @@ You can check the following files:
 
 This package can be installed through Composer.
 ```bash
-composer require breadlesscode/office-conveter
+composer require breadlesscode/office-converter
 ```
 ## How to use
 
